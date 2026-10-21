@@ -1,0 +1,56 @@
+:root{
+  /* Neutral ramp — warm-neutral paper to near-black ink */
+  --paper-000:#ffffff;
+  --paper-050:#faf9f8;
+  --paper-100:#f2f1ef;
+  --paper-150:#eceae7;
+  --paper-200:#e3e1dd;
+  --paper-300:#d4d2cd;
+  --ink-400:#a3a29d;
+  --ink-500:#8a8a85;
+  --ink-600:#5c5c58;
+  --ink-700:#333331;
+  --ink-800:#1a1a19;
+  --ink-900:#0a0a0a;
+
+  /* Photographic tints — cool concrete + warm timber, sampled from the reference imagery */
+  --tint-concrete:#dcdedd;
+  --tint-glass:#e8eeee;
+  --tint-timber:#c9a57a;
+  --tint-clay:#b98b62;
+  --tint-moss:#8f9583;
+
+  /* Semantic surfaces */
+  --surface-page:var(--paper-000);
+  --surface-raised:var(--paper-050);
+  --surface-sunken:var(--paper-100);
+  --surface-inverse:var(--ink-900);
+  --surface-card:var(--paper-000);
+  --surface-media:var(--paper-150);
+
+  /* Semantic text */
+  --text-body:var(--ink-900);
+  --text-display:var(--ink-900);
+  --text-muted:var(--ink-500);
+  --text-subtle:var(--ink-400);
+  --text-inverse:var(--paper-000);
+
+  /* Lines + strokes */
+  --line-hairline:#e6e4e0;
+  --line-rule:var(--paper-300);
+  --line-strong:var(--ink-900);
+  --line-inverse:rgba(255,255,255,.24);
+
+  /* Interactive */
+  --action-solid:var(--ink-900);
+  --action-solid-hover:var(--ink-700);
+  --action-on-solid:var(--paper-000);
+  --action-quiet:transparent;
+  --action-quiet-hover:var(--paper-150);
+  --focus-ring:var(--ink-900);
+
+  /* Scrims / protection */
+  --scrim-top:linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,0) 60%); /* @kind color */
+  --scrim-bottom:linear-gradient(0deg,rgba(0,0,0,.32),rgba(0,0,0,0) 55%); /* @kind color */
+  --veil-light:rgba(255,255,255,.72);
+}

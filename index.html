@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="_ds/atrium-design-system-e5d1196b-0842-4dd2-8465-b70afc793e90/styles.css">
+<script src="_ds/atrium-design-system-e5d1196b-0842-4dd2-8465-b70afc793e90/_ds_bundle.js"></script>
+<style>
+body{margin:0;background:#ffffff;-webkit-font-smoothing:antialiased}
+a{color:#0a0a0a;text-decoration:none;transition:opacity .16s cubic-bezier(.2,0,.2,1)}
+a:hover{opacity:.55}
+button{font:inherit;color:inherit}
+@keyframes remu-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+
+<div style="font-family:'Schibsted Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;color:#0a0a0a;font-size:15px;line-height:1.45;letter-spacing:-0.005em;min-height:100vh;display:flex;flex-direction:column">
+
+  <div style="background:#f2f1ef;position:relative;padding:0 clamp(12px,2vw,24px)">
+    <div style="position:absolute;left:clamp(12px,2vw,24px);right:clamp(12px,2vw,24px);top:96px;bottom:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));pointer-events:none">
+      <div style="border-left:1px solid #e6e4e0"></div>
+      <div style="border-left:1px solid #e6e4e0"></div>
+      <div style="border-left:1px solid #e6e4e0"></div>
+      <div style="border-left:1px solid #e6e4e0"></div>
+    </div>
+
+    <header style="position:relative;display:flex;align-items:flex-start;gap:clamp(16px,3vw,48px);padding-top:16px">
+      <a href="#" onClick="{{ goHome }}" style="flex:0 0 auto;width:34px;height:34px;border:1px solid #0a0a0a;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;text-transform:lowercase;letter-spacing:0.02em">rs</a>
+      <nav style="flex:1 1 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:start">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+          <button onClick="{{ n.go }}" style="background:none;border:0;border-left:1px solid transparent;padding:0 0 0 12px;text-align:left;cursor:pointer;font-size:13px;text-transform:lowercase">
+            <span style="{{ n.style }}">{{ n.label }}</span>
+          </button>
+        </sc-for>
+      </nav>
+    </header>
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;padding-bottom:clamp(16px,2.6vw,30px)">
+        <div style="display:flex;justify-content:flex-end;align-items:flex-start;padding-top:clamp(10px,1.6vw,22px)">
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArchMedia" src="assets/d1.png" alt="Timber-lined terrace" shape="arch" width="clamp(82px,12.5vw,164px)" height="clamp(266px,35vw,434px)" offset-y="18" tint="var(--tint-timber)" style="margin-left:-22px" hint-size="164px,434px"></x-import>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArchMedia" src="assets/d5.png" alt="House facade" shape="arch" width="clamp(82px,12.5vw,164px)" height="clamp(232px,31vw,380px)" offset-y="-24" tint="var(--tint-concrete)" style="margin-left:-22px" hint-size="164px,380px"></x-import>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArchMedia" src="assets/b4.png" alt="Living room facing the hills" shape="arch" width="clamp(82px,12.5vw,164px)" height="clamp(288px,38vw,478px)" offset-y="26" tint="var(--tint-glass)" style="margin-left:-22px" hint-size="164px,478px"></x-import>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArchMedia" src="assets/c4.png" alt="Grid shelving in a study" shape="arch" width="clamp(82px,12.5vw,164px)" height="clamp(246px,32vw,394px)" offset-y="-8" tint="var(--tint-clay)" style="margin-left:-22px" hint-size="164px,394px"></x-import>
+        </div>
+        <h1 style="position:relative;z-index:2;margin:-0.52em 0 0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(72px,17vw,240px);letter-spacing:-0.045em;line-height:0.82;text-transform:lowercase">remu</h1>
+        <p style="position:relative;z-index:2;margin:clamp(8px,1.5vw,14px) 0 0;font-size:clamp(17px,1.5vw,19px);line-height:1.2;letter-spacing:-0.02em;max-width:15ch;text-wrap:pretty">Warm, considered spaces for everyday life</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isInner }}" hint-placeholder-val="{{ false }}">
+      <div style="position:relative;padding:clamp(56px,9vw,120px) 0 clamp(28px,4vw,52px)">
+        <span style="display:block;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">{{ pageEyebrow }}</span>
+        <h1 style="margin:clamp(10px,1.6vw,18px) 0 0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(40px,6.2vw,92px);letter-spacing:-0.035em;line-height:0.95;text-transform:lowercase">{{ pageTitle }}</h1>
+        <p style="margin:clamp(16px,2.4vw,28px) 0 0;font-size:clamp(24px,2.5vw,34px);font-weight:400;letter-spacing:-0.02em;line-height:1.16;max-width:26ch;text-wrap:pretty">{{ pageLead }}</p>
+      </div>
+    </sc-if>
+  </div>
+
+  <main style="flex:1 1 auto">
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:clamp(48px,7vw,84px) clamp(12px,2vw,24px) 0">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid #d4d2cd;padding-bottom:16px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">01 — the studio</span>
+          <h2 style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(30px,4.2vw,56px);letter-spacing:-0.04em;line-height:0.94;text-transform:lowercase">who we are</h2>
+        </div>
+      </div>
+    </div>
+    <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,5vw,64px);padding:clamp(32px,4vw,52px) clamp(12px,2vw,24px) clamp(48px,7vw,80px);align-items:start">
+      <div style="aspect-ratio:3/4;max-height:520px;background:#eceae7;overflow:hidden">
+        <img src="assets/c3.png" alt="Piano against a plaster wall" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:clamp(24px,3vw,40px);padding-top:4px">
+        <p style="margin:0;font-size:clamp(24px,2.5vw,34px);font-weight:400;letter-spacing:-0.02em;line-height:1.16;max-width:26ch;text-wrap:pretty">Remu Studio is a small architecture and interior practice in Jakarta, working on houses people intend to stay in.</p>
+        <div style="display:flex;flex-direction:column;gap:14px;max-width:46ch">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">what you get</span>
+          <p style="margin:0">Every engagement ends with something you can hold: a measured drawing set, a material board with real samples, and a builder's bill of quantities. Three ways to work with us, from a single consultation to a finished house handed over with the keys.</p>
+        </div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center">
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goPackages }}" direction="chevron" size="sm" underline="{{ yes }}" hint-size="150px,20px">see the packages</x-import>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goWork }}" direction="chevron" size="sm" tone="muted" hint-size="150px,20px">before and after</x-import>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0 clamp(12px,2vw,24px) clamp(56px,8vw,96px)">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid #d4d2cd;padding-bottom:16px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">02 — three ways to work with us</span>
+          <h2 style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(30px,4.2vw,56px);letter-spacing:-0.04em;line-height:0.94;text-transform:lowercase">packages</h2>
+        </div>
+        <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goPackages }}" direction="chevron" size="sm" hint-size="120px,20px">all packages</x-import>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:#e6e4e0;margin-top:36px;border:1px solid #e6e4e0">
+        <sc-for list="{{ packages }}" as="p" hint-placeholder-count="3">
+          <div style="background:color-mix(in oklab, var(--tint-timber) 52%, var(--paper-000));padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:14px;min-height:240px">
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.02em;color:#4a3c2c">{{ p.no }}</span>
+            <h3 style="margin:0;font-size:19px;font-weight:400;letter-spacing:-0.02em;text-transform:lowercase">{{ p.name }}</h3>
+            <p style="margin:0;font-size:13px;line-height:1.4;color:#241d14;max-width:34ch;text-wrap:pretty">{{ p.summary }}</p>
+            <span style="margin-top:auto;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:0.02em">{{ p.price }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:0 clamp(12px,2vw,24px) clamp(56px,8vw,96px)">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid #d4d2cd;padding-bottom:16px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">03 — houses we have finished</span>
+          <h2 style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(30px,4.2vw,56px);letter-spacing:-0.04em;line-height:0.94;text-transform:lowercase">selected work</h2>
+        </div>
+        <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goWork }}" direction="chevron" size="sm" hint-size="120px,20px">all projects</x-import>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:clamp(16px,2vw,28px);padding-top:36px">
+        <sc-for list="{{ featured }}" as="f" hint-placeholder-count="4">
+          <a href="#" onClick="{{ goWork }}" style="display:block">
+            <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArchMedia" src="{{ f.src }}" alt="{{ f.title }}" shape="arch" width="100%" height="clamp(220px,26vw,330px)" tint="var(--tint-concrete)" hint-size="100%,300px"></x-import>
+            <div style="margin-top:16px;display:flex;flex-direction:column;gap:5px">
+              <span style="font-size:15px">{{ f.title }}</span>
+              <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;color:#8a8a85">{{ f.meta }}</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isPackages }}" hint-placeholder-val="{{ false }}">
+    <section style="padding:clamp(40px,6vw,72px) clamp(12px,2vw,24px) clamp(40px,6vw,72px)">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid #d4d2cd;padding-bottom:16px;margin-bottom:clamp(28px,3.4vw,44px)">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">01 — scope and fees</span>
+          <h2 style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(30px,4.2vw,56px);letter-spacing:-0.04em;line-height:0.94;text-transform:lowercase">the three packages</h2>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1px;background:#e6e4e0;border:1px solid #e6e4e0">
+        <sc-for list="{{ packages }}" as="p" hint-placeholder-count="3">
+          <div style="background:#ffffff;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.02em;color:#8a8a85">{{ p.no }}</span>
+              <span style="font-size:13px;color:#8a8a85;text-transform:lowercase">{{ p.duration }}</span>
+            </div>
+            <h3 style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(28px,3vw,40px);letter-spacing:-0.035em;line-height:1;text-transform:lowercase">{{ p.name }}</h3>
+            <p style="margin:0;color:#5c5c58;max-width:34ch;text-wrap:pretty">{{ p.summary }}</p>
+            <div style="border-top:1px solid #e6e4e0;padding-top:16px;display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:13px;color:#8a8a85;text-transform:lowercase">{{ p.priceLabel }}</span>
+              <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:clamp(17px,1.8vw,22px);letter-spacing:0.01em">{{ p.price }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid #e6e4e0;padding-top:16px">
+              <span style="font-size:13px;color:#8a8a85;text-transform:lowercase">included</span>
+              <sc-for list="{{ p.items }}" as="it" hint-placeholder-count="5">
+                <div style="display:grid;grid-template-columns:14px minmax(0,1fr);gap:8px;font-size:13px;line-height:1.4">
+                  <span style="color:#a3a29d">›</span>
+                  <span>{{ it }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:auto;padding-top:8px">
+              <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goContact }}" direction="chevron" size="sm" underline="{{ yes }}" hint-size="160px,20px">{{ p.cta }}</x-import>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:0 clamp(12px,2vw,24px) clamp(56px,8vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(32px,5vw,64px);align-items:start">
+      <div>
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid #d4d2cd;padding-bottom:16px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">02 — priced separately</span>
+            <h2 style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(26px,3.4vw,44px);letter-spacing:-0.04em;line-height:0.94;text-transform:lowercase">add-ons</h2>
+          </div>
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85">idr</span>
+        </div>
+        <sc-for list="{{ addons }}" as="a" hint-placeholder-count="4">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-bottom:1px solid #e6e4e0;padding:16px 0">
+            <span style="font-size:15px">{{ a.name }}</span>
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:13px;white-space:nowrap">{{ a.price }}</span>
+          </div>
+        </sc-for>
+        <p style="margin:20px 0 0;font-size:13px;line-height:1.4;color:#8a8a85;max-width:48ch">Design fees are quoted per square metre of gross floor area and paid in four stages. Construction figures are indicative build cost for Greater Jakarta and are confirmed after the survey.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:clamp(20px,3vw,32px)">
+        <div style="aspect-ratio:1/1;background:#eceae7;overflow:hidden">
+          <img src="assets/d3.png" alt="Kitchen island in dark timber and stone" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;max-width:42ch">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">not sure which one</span>
+          <p style="margin:0">Start with the consultation. If you continue into design within sixty days, the consultation fee is credited in full against the design fee.</p>
+          <span style="align-self:flex-start"><x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goContact }}" direction="chevron" size="sm" underline="{{ yes }}" hint-size="170px,20px">book a consultation</x-import></span>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}">
+    <section style="padding:clamp(40px,6vw,72px) clamp(12px,2vw,24px) clamp(56px,8vw,96px)">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid #d4d2cd;padding-bottom:16px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">01 — same address, photographed twice</span>
+          <h2 style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(30px,4.2vw,56px);letter-spacing:-0.04em;line-height:0.94;text-transform:lowercase">transformations</h2>
+        </div>
+        <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85">{{ projectCount }}</span>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 0 0;flex-wrap:wrap">
+        <div style="display:flex;gap:20px">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="3">
+            <button onClick="{{ f.go }}" style="background:none;border:0;padding:0 0 3px;cursor:pointer;font-size:13px;text-transform:lowercase">
+              <span style="{{ f.style }}">{{ f.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">filter</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ visibleProjects }}" as="p" hint-placeholder-count="3">
+          <article style="border-bottom:1px solid #e6e4e0;padding:clamp(28px,4vw,48px) 0">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:clamp(16px,2vw,24px)">
+              <h3 style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(26px,3.4vw,44px);letter-spacing:-0.035em;line-height:1;text-transform:lowercase">{{ p.title }}</h3>
+              <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.08em;color:#8a8a85">{{ p.meta }}</span>
+            </div>
+            <div style="{{ p.pairStyle }}">
+              <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+                <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArchMedia" src="{{ p.before }}" alt="Before" shape="square" width="100%" height="clamp(190px,24vw,340px)" tint="var(--tint-concrete)" hint-size="100%,300px"></x-import>
+                <figcaption style="font-size:13px;color:#8a8a85;text-transform:lowercase">before · {{ p.beforeNote }}</figcaption>
+              </figure>
+              <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+                <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArchMedia" src="{{ p.after }}" alt="After" shape="square" width="100%" height="clamp(190px,24vw,340px)" tint="var(--tint-timber)" hint-size="100%,300px"></x-import>
+                <figcaption style="font-size:13px;text-transform:lowercase">after · {{ p.afterNote }}</figcaption>
+              </figure>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(20px,3vw,40px);padding-top:clamp(18px,2.4vw,28px)">
+              <p style="margin:0;max-width:44ch;text-wrap:pretty">{{ p.story }}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
+                <div style="display:flex;flex-direction:column;gap:5px">
+                  <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">scope</span>
+                  <span style="font-size:13px">{{ p.scope }}</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:5px">
+                  <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">package</span>
+                  <span style="font-size:13px">{{ p.package }}</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:5px">
+                  <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">duration</span>
+                  <span style="font-size:13px">{{ p.duration }}</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isProcess }}" hint-placeholder-val="{{ false }}">
+    <section style="padding:clamp(40px,6vw,72px) clamp(12px,2vw,24px) clamp(56px,8vw,96px)">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid #d4d2cd;padding-bottom:16px;margin-bottom:clamp(20px,2.6vw,32px)">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">01 — first call to handover</span>
+          <h2 style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(30px,4.2vw,56px);letter-spacing:-0.04em;line-height:0.94;text-transform:lowercase">five phases</h2>
+        </div>
+      </div>
+      <sc-for list="{{ phases }}" as="ph" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(20px,3vw,48px);border-top:1px solid #e6e4e0;padding:clamp(24px,3.2vw,40px) 0">
+          <div style="display:flex;gap:16px;align-items:baseline">
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;color:#8a8a85;letter-spacing:0.12em">{{ ph.no }}</span>
+            <h3 style="margin:0;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(24px,2.8vw,36px);letter-spacing:-0.035em;line-height:1;text-transform:lowercase">{{ ph.name }}</h3>
+          </div>
+          <p style="margin:0;max-width:44ch;text-wrap:pretty">{{ ph.body }}</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">you receive</span>
+            <sc-for list="{{ ph.deliverables }}" as="d" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:14px minmax(0,1fr);gap:8px;font-size:13px;line-height:1.4">
+                <span style="color:#a3a29d">›</span>
+                <span>{{ d }}</span>
+              </div>
+            </sc-for>
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;padding-top:4px">{{ ph.weeks }}</span>
+          </div>
+        </div>
+      </sc-for>
+      <div style="border-top:1px solid #e6e4e0;padding-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,48px);align-items:start">
+        <p style="margin:0;font-size:clamp(24px,2.5vw,34px);font-weight:400;letter-spacing:-0.02em;line-height:1.16;max-width:24ch;text-wrap:pretty">Nothing is built before it is drawn, and nothing is drawn before the site is measured.</p>
+        <div style="aspect-ratio:4/3;background:#eceae7;overflow:hidden">
+          <img src="assets/b3.png" alt="Dining table facing the valley" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+    <section style="padding:clamp(40px,6vw,72px) clamp(12px,2vw,24px) clamp(56px,8vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(32px,5vw,64px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:clamp(24px,3vw,36px)">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">fastest way</span>
+          <p style="margin:0;max-width:44ch">Send the address, a few photos of the space, and roughly what you have in mind. We reply within one working day and the first call costs nothing.</p>
+          <span style="align-self:flex-start;margin-top:6px"><x-import component-from-global-scope="AtriumDesignSystem_e5d119.Button" href="{{ waHref }}" target="_blank" rel="noopener" variant="solid" size="md" icon="chevron" hint-size="190px,44px">chat on whatsapp</x-import></span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:24px;border-top:1px solid #e6e4e0;padding-top:24px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">studio</span>
+            <span style="font-size:13px;line-height:1.4">Jl. Cipete Raya 18B<br>Jakarta Selatan 12410 • Indonesia</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">telephone</span>
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:13px">{{ phone }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">hours</span>
+            <span style="font-size:13px;line-height:1.4">Monday — Friday, 09.00 — 17.00<br>Site visits on Saturday</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">elsewhere</span>
+            <span style="display:flex;flex-direction:column;gap:4px">
+              <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" direction="diagonal" size="sm" hint-size="90px,20px">Instagram</x-import>
+              <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" direction="diagonal" size="sm" hint-size="90px,20px">Pinterest</x-import>
+            </span>
+          </div>
+        </div>
+        <div style="border-top:1px solid #e6e4e0;padding-top:24px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">bring to the first call</span>
+          <sc-for list="{{ bring }}" as="b" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:14px minmax(0,1fr);gap:8px;font-size:13px;line-height:1.4">
+              <span style="color:#a3a29d">›</span>
+              <span>{{ b }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="aspect-ratio:3/4;max-height:560px;background:#eceae7;overflow:hidden">
+        <img src="assets/contact.png" alt="Stone feature wall in a living room" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+    </section>
+  </sc-if>
+
+  </main>
+
+  <footer>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));height:clamp(220px,26vw,320px)">
+      <div style="overflow:hidden;background:#eceae7"><img src="assets/a5.png" alt="Stone boundary wall under a tree" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div style="overflow:hidden;background:#eceae7"><img src="assets/c1.png" alt="Sofa beside full-height glazing" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div style="overflow:hidden;background:#eceae7"><img src="assets/b2.png" alt="Stone boundary wall" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+    </div>
+
+    <div style="padding:clamp(32px,4vw,52px) clamp(12px,2vw,24px) 0">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;border-bottom:1px solid #e6e4e0;padding-bottom:20px">
+        <div style="display:flex;gap:24px;align-items:baseline">
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a85;text-transform:lowercase">follow us</span>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" direction="diagonal" size="sm" hint-size="90px,20px">Instagram</x-import>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" direction="diagonal" size="sm" hint-size="90px,20px">Pinterest</x-import>
+        </div>
+        <x-import component-from-global-scope="AtriumDesignSystem_e5d119.Button" href="{{ waHref }}" target="_blank" rel="noopener" variant="solid" size="md" icon="chevron" hint-size="190px,44px">chat on whatsapp</x-import>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:clamp(20px,3vw,36px);padding:28px 0 clamp(24px,4vw,44px)">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:15px">Jakarta</span>
+          <span style="font-size:13px;line-height:1.4;color:#5c5c58">Jl. Cipete Raya 18B<br>Jakarta Selatan 12410 • Indonesia</span>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" direction="chevron" size="sm" tone="muted" hint-size="110px,20px">see on maps</x-import>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:15px">Telephone</span>
+          <span style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:13px;color:#5c5c58">{{ phone }}</span>
+          <span style="font-size:13px;color:#5c5c58">Monday — Friday</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:15px">Pages</span>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goPackages }}" direction="chevron" size="sm" tone="muted" hint-size="110px,20px">packages</x-import>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goWork }}" direction="chevron" size="sm" tone="muted" hint-size="140px,20px">before and after</x-import>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goProcess }}" direction="chevron" size="sm" tone="muted" hint-size="110px,20px">process</x-import>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:15px">Enquiries</span>
+          <span style="font-size:13px;color:#5c5c58">studio@remu.id</span>
+          <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goContact }}" direction="chevron" size="sm" tone="muted" hint-size="110px,20px">contact</x-import>
+        </div>
+      </div>
+      <div style="text-align:center;padding-bottom:8px">
+        <span style="display:block;font-family:Manrope,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;font-size:clamp(72px,17vw,240px);letter-spacing:-0.045em;line-height:0.9;text-transform:lowercase">remu</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid #e6e4e0;padding:14px 0 20px;font-size:11px;line-height:1.36;color:#8a8a85">
+        <span>© 2026 Remu Studio</span>
+        <span>Demo proposal — imagery and figures indicative</span>
+        <x-import component-from-global-scope="AtriumDesignSystem_e5d119.ArrowLink" href="#" onClick="{{ goHome }}" direction="up" size="xs" tone="muted" hint-size="110px,16px">back to top</x-import>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:980},&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;packages&quot;,&quot;work&quot;,&quot;process&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Demo&quot;},&quot;showPrices&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Packages&quot;},&quot;projectLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;side by side&quot;,&quot;stacked&quot;],&quot;default&quot;:&quot;side by side&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Before &amp; after&quot;},&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;6281122334455&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+class Component extends DCLogic {
+  state = { page: null, filter: "all" };
+
+  get page() { return this.state.page ?? (this.props.startPage ?? "home"); }
+
+  go(page) {
+    return (e) => {
+      if (e) e.preventDefault();
+      this.setState({ page });
+      const el = document.scrollingElement || document.documentElement;
+      if (el) el.scrollTop = 0;
+    };
+  }
+
+  renderVals() {
+    const page = this.page;
+    const showPrices = this.props.showPrices ?? true;
+    const stacked = (this.props.projectLayout ?? "side by side") === "stacked";
+    const wa = (this.props.whatsapp ?? "6281122334455").replace(/[^0-9]/g, "");
+
+    const nav = [
+      { label: "packages", key: "packages" },
+      { label: "before and after", key: "work" },
+      { label: "process", key: "process" },
+      { label: "contact", key: "contact" },
+    ];
+
+    const heads = {
+      packages: {
+        eyebrow: "what we offer",
+        title: "packages",
+        lead: "Three ways to work with us. Each one ends with drawings you own and a figure you can build to.",
+      },
+      work: {
+        eyebrow: "before and after",
+        title: "the difference",
+        lead: "The same address, photographed before we started and after handover. Renovations and houses built from the ground up.",
+      },
+      process: {
+        eyebrow: "how we work",
+        title: "process",
+        lead: "Five phases, each closed by something you can read, hold or sign before the next one opens.",
+      },
+      contact: {
+        eyebrow: "get in touch",
+        title: "contact",
+        lead: "Tell us where the house is and what bothers you about it. The first conversation is free.",
+      },
+    };
+    const head = heads[page] || heads.contact;
+
+    const priced = (v) => (showPrices ? v : "on request");
+
+    const projects = [
+      {
+        id: "p1", tag: "renovation", title: "Rumah Cipete",
+        meta: "Jakarta Selatan · 2025 · 186 m²",
+        before: "assets/before-1.png", after: "assets/d2.png",
+        beforeNote: "existing dining corner, 2024",
+        afterNote: "kitchen and dining, 2025",
+        story: "A 1990s house with the kitchen sealed off behind two doors, and a dining room nobody sat in. We took down one wall, moved the wet zone to the north face and let the island stand where the two rooms used to be divided.",
+        scope: "Interior, kitchen, dining", package: "design + build", duration: "7 months",
+      },
+      {
+        id: "p2", tag: "renovation", title: "Rumah Menteng",
+        meta: "Jakarta Pusat · 2024 · 240 m²",
+        before: "assets/before-2.png", after: "assets/c2.png",
+        beforeNote: "family room, 2023",
+        afterNote: "family room, 2024",
+        story: "The family wanted one room that could hold everybody at once. A stone wall carries the television and the lighting, and the ceiling was lowered in one soft plane to bring the room down to human scale.",
+        scope: "Living, ceiling, lighting", package: "design + build", duration: "5 months",
+      },
+      {
+        id: "p3", tag: "renovation", title: "Ruang Baca Pondok Indah",
+        meta: "Jakarta Selatan · 2024 · 42 m²",
+        before: "assets/before-3.png", after: "assets/c4.png",
+        beforeNote: "existing shelving, 2023",
+        afterNote: "study and library, 2024",
+        story: "The old shelves ran down a glazed corridor where the afternoon sun bleached every spine. We moved the books inward: floor-to-ceiling grid joinery on two walls, a raised timber platform for sitting on the floor, and one high window kept for reading light.",
+        scope: "Study, joinery", package: "design", duration: "3 months",
+      },
+      {
+        id: "p4", tag: "new build", title: "Rumah Bintaro",
+        meta: "Tangerang Selatan · 2025 · 320 m²",
+        before: "assets/before-4.png", after: "assets/d5.png",
+        beforeNote: "site and street boundary, 2024",
+        afterNote: "street elevation, 2025",
+        story: "A narrow plot facing west. The white volume shades itself, the timber panel marks the entrance, and every opening on the hot face is set back behind a reveal.",
+        scope: "Full house, permits, build", package: "design + build", duration: "14 months",
+      },
+      {
+        id: "p5", tag: "new build", title: "Rumah Bukit Sentul",
+        meta: "Bogor · 2026 · 410 m²",
+        before: "assets/before-5.png", after: "assets/b4.png",
+        beforeNote: "site and boundary wall, 2024",
+        afterNote: "main living volume, 2026",
+        story: "Built on a slope, so the living floor sits one level above the road and looks straight out at the ridge. Stone from the site was reused in the boundary wall.",
+        scope: "Full house, landscape", package: "design + build", duration: "18 months",
+      },
+    ];
+
+    const filters = ["all", "renovation", "new build"];
+    const visible = this.state.filter === "all" ? projects : projects.filter((p) => p.tag === this.state.filter);
+
+    return {
+      yes: true,
+      isHome: page === "home",
+      isInner: page !== "home",
+      isPackages: page === "packages",
+      isWork: page === "work",
+      isProcess: page === "process",
+      isContact: page === "contact",
+      pageEyebrow: head.eyebrow,
+      pageTitle: head.title,
+      pageLead: head.lead,
+
+      goHome: this.go("home"),
+      goPackages: this.go("packages"),
+      goWork: this.go("work"),
+      goProcess: this.go("process"),
+      goContact: this.go("contact"),
+
+      navItems: nav.map((n) => ({
+        label: n.label,
+        go: this.go(n.key),
+        style: {
+          borderBottom: page === n.key ? "1px solid #0a0a0a" : "1px solid transparent",
+          paddingBottom: "3px",
+          color: page === n.key ? "#0a0a0a" : "#5c5c58",
+        },
+      })),
+
+      filters: filters.map((f) => ({
+        label: f,
+        go: (e) => { if (e) e.preventDefault(); this.setState({ filter: f }); },
+        style: {
+          borderBottom: this.state.filter === f ? "1px solid #0a0a0a" : "1px solid transparent",
+          paddingBottom: "3px",
+          color: this.state.filter === f ? "#0a0a0a" : "#8a8a85",
+        },
+      })),
+
+      projectCount: visible.length + " of " + projects.length + " projects",
+      visibleProjects: visible.map((p) => ({
+        ...p,
+        pairStyle: {
+          display: "grid",
+          gridTemplateColumns: stacked ? "minmax(0,1fr)" : "repeat(auto-fit,minmax(min(100%,260px),1fr))",
+          gap: "clamp(12px,1.6vw,20px)",
+        },
+      })),
+
+      packages: [
+        {
+          no: "01", name: "consultation", duration: "2 weeks",
+          summary: "One session at the studio, one visit to your house, and a written direction you can act on with or without us.",
+          priceLabel: "flat fee", price: priced("Rp 7.500.000"),
+          items: [
+            "Two-hour studio session",
+            "Site visit and photo survey",
+            "Written concept direction",
+            "Indicative budget range",
+            "Material and colour board",
+          ],
+          cta: "book a session",
+        },
+        {
+          no: "02", name: "design", duration: "8 — 12 weeks",
+          summary: "The full drawing set, specified and priced, ready to hand to any contractor you choose.",
+          priceLabel: "from, per m² of floor area", price: priced("Rp 350.000 / m²"),
+          items: [
+            "Measured survey and schematic plans",
+            "3D visuals of every main room",
+            "Working drawings and joinery details",
+            "Structural and MEP coordination",
+            "Material specification and bill of quantities",
+            "Two rounds of revision at each stage",
+          ],
+          cta: "request a quote",
+        },
+        {
+          no: "03", name: "design + build", duration: "6 — 18 months",
+          summary: "Everything in design, then we build it. One contract, one team, one person answering the phone.",
+          priceLabel: "from, per m² incl. construction", price: priced("Rp 8.500.000 / m²"),
+          items: [
+            "Everything in the design package",
+            "Contractor procurement and contract",
+            "Permit (PBG) submission and follow-up",
+            "Weekly site supervision and photo report",
+            "Fixed construction schedule with penalties",
+            "Handover file and 12-month defect cover",
+          ],
+          cta: "arrange a site visit",
+        },
+      ],
+
+      addons: [
+        { name: "Animated walkthrough, 60 seconds", price: priced("6.500.000") },
+        { name: "Furniture and fixture procurement", price: priced("10% of value") },
+        { name: "Permit (PBG) assistance, standalone", price: priced("12.000.000") },
+        { name: "Site supervision only, per month", price: priced("18.000.000") },
+      ],
+
+      phases: [
+        {
+          no: "01", name: "first conversation", weeks: "week 0",
+          body: "A call or a coffee. You describe the house and what is not working; we say plainly whether we are the right studio for it and what it is likely to cost.",
+          deliverables: ["Fee proposal", "Indicative budget range", "Honest answer on scope"],
+        },
+        {
+          no: "02", name: "survey and brief", weeks: "week 1 — 3",
+          body: "We measure what exists, photograph every room, and write the brief down — room by room, with the things you said you could not live without marked as such.",
+          deliverables: ["Measured drawings of the existing house", "Written brief, signed by both sides", "Site and orientation study"],
+        },
+        {
+          no: "03", name: "concept", weeks: "week 3 — 7",
+          body: "Two or three plan options, tested against light, circulation and cost. We choose one together before anything is rendered in detail.",
+          deliverables: ["Plan options with commentary", "3D views of the main spaces", "Material and colour board"],
+        },
+        {
+          no: "04", name: "drawings and permits", weeks: "week 7 — 16",
+          body: "The chosen scheme is drawn to construction standard, coordinated with structure and services, priced line by line, and submitted for permit.",
+          deliverables: ["Working drawing set", "Bill of quantities", "Permit submission"],
+        },
+        {
+          no: "05", name: "build and handover", weeks: "month 4 — 18",
+          body: "Weekly site visits, a photo report every Friday, and a snag list closed before the final payment. We hand over the file with the keys.",
+          deliverables: ["Weekly progress report", "Snag list, closed", "As-built file and warranties"],
+        },
+      ],
+
+      bring: [
+        "The address, or a pin on the map",
+        "Photos of every room as it is today",
+        "Who lives there now, and who will in five years",
+        "The budget you would rather not exceed",
+      ],
+
+      featured: [
+        { src: "assets/d2.png", title: "Rumah Cipete", meta: "Jakarta · 2025" },
+        { src: "assets/d5.png", title: "Rumah Bintaro", meta: "Tangerang · 2025" },
+        { src: "assets/b4.png", title: "Rumah Bukit Sentul", meta: "Bogor · 2026" },
+        { src: "assets/c4.png", title: "Ruang Baca", meta: "Jakarta · 2024" },
+      ],
+
+      phone: "+62 811 2233 4455",
+      waHref: "https://wa.me/" + wa,
+    };
+  }
+}
+</script>
+</body>
+</html>

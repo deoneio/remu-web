@@ -1,0 +1,49 @@
+:root{
+  /* Display — lowercase, near-hairline weight, optically tightened */
+  --type-wordmark-size:clamp(72px,17vw,260px);
+  --type-wordmark-weight:300;
+  --type-wordmark-tracking:-0.045em;
+  --type-wordmark-leading:0.82;
+
+  --type-display-size:clamp(40px,6.2vw,92px);
+  --type-display-weight:300;
+  --type-display-tracking:-0.035em;
+  --type-display-leading:0.95;
+
+  /* Lead paragraph — the big statement text */
+  --type-lead-size:clamp(24px,2.5vw,34px);
+  --type-lead-weight:400;
+  --type-lead-tracking:-0.02em;
+  --type-lead-leading:1.16;
+
+  /* Headings */
+  --type-h1-size:34px;
+  --type-h2-size:24px;
+  --type-h3-size:19px;
+  --type-heading-weight:400;
+  --type-heading-tracking:-0.02em;
+  --type-heading-leading:1.1;
+
+  /* Body */
+  --type-body-size:15px;
+  --type-body-leading:1.45;
+  --type-body-tracking:-0.005em;
+  --type-small-size:13px;
+  --type-small-leading:1.4;
+  --type-micro-size:11px;
+  --type-micro-leading:1.36;
+
+  /* Labels — nav items, eyebrows: lowercase, never uppercase */
+  --type-label-size:13px;
+  --type-label-weight:400;
+  --type-label-tracking:0;
+  --type-label-transform:lowercase;
+
+  /* Mono — specs, coordinates, numerals */
+  --type-mono-size:11px;
+  --type-mono-tracking:0.02em;
+
+  /* Semantic aliases */
+  --text-lead-font:var(--font-text);
+  --text-display-font:var(--font-display);
+}

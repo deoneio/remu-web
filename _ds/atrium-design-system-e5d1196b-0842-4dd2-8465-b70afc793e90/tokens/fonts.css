@@ -1,0 +1,11 @@
+/* Webfonts.
+   SUBSTITUTION: the source screenshots use licensed grotesques we do not have binaries for.
+   Nearest Google Fonts matches are loaded here. Replace with real binaries + local @font-face
+   when the foundry files are available. */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Schibsted+Grotesk:ital,wght@0,400..700;1,400..600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root{
+  --font-display:"Manrope","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-text:"Schibsted Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}

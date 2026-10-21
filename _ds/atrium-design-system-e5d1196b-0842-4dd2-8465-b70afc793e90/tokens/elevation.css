@@ -1,0 +1,9 @@
+:root{
+  /* Almost no elevation: the system separates with rules and negative space.
+     Shadows appear only under floating pills over imagery. */
+  --shadow-none:none; /* @kind shadow */
+  --shadow-pill:0 1px 2px rgba(10,10,10,.08);
+  --shadow-float:0 8px 24px -12px rgba(10,10,10,.18);
+  --shadow-inset-hairline:inset 0 0 0 1px var(--line-hairline);
+  --blur-veil:saturate(1.1) blur(18px); /* @kind other */
+}

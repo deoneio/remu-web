@@ -1,0 +1,11 @@
+:root{
+  --radius-0:0px;
+  --radius-sm:2px;
+  --radius-md:6px;
+  --radius-pill:999px;
+  /* Arch: a column rounded at the top only — the signature media shape */
+  --radius-arch:999px 999px 0 0;
+  /* Capsule: fully rounded column, top and bottom */
+  --radius-capsule:999px;
+  --radius-avatar:999px;
+}
